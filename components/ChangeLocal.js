@@ -8,7 +8,10 @@ import {
   TabBarIOS,
   TextInput,
   TouchableHighlight,
-  ScrollView
+  ScrollView,
+  Keyboard,
+  TouchableWithoutFeedback,
+  AlertIOS
 } from 'react-native';
 
 
@@ -25,13 +28,23 @@ class ChangeLocal extends Component {
   }
 
   onPressAddress(address, city, usState, zip) {
-    this.props.changeAddress(address, city, usState, zip)
-    this.setState({
-      addressInput: '',
-      cityInput: '',
-      stateInput: '',
-      zipInput: ''
-    })
+    if(address && city && usState && zip) {
+      this.props.changeAddress(address, city, usState, zip)
+      this.setState({
+        addressInput: '',
+        cityInput: '',
+        stateInput: '',
+        zipInput: ''
+      })
+    } else {
+      AlertIOS.alert(
+       'Please fill out your full address'
+      );
+    }
+  }
+
+  closeKeyboard() {
+    Keyboard.dismiss();
   }
 
   render() {
@@ -42,74 +55,78 @@ class ChangeLocal extends Component {
     const zip = this.state.zipInput;
 
     return(
-      <View style={ styles.changeLocal }>
-        <Text style={ styles.question }>
-          Where are you registered to vote?
-        </Text>
-        <View style={ styles.inputBlock }>
-          <View style={ styles.textInput }>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View
+          style={ styles.changeLocal }>
+          <Text style={ styles.question }>
+            Where are you registered to vote?
+          </Text>
+          <View style={ styles.inputBlock }>
+            <View style={ styles.textInput }>
 
-            <TextInput
-              ref="address"
-              style={ styles.input }
-              onChangeText={ input => this.setState({ addressInput: input }) }
-              placeholder="Address"
-              value={ this.state.addressInput }
-              returnKeyType='next'
-              autoCapitalize="words"
-              onSubmitEditing={(event) => {
-                this.refs.city.focus();
-              } }
-            />
+              <TextInput
+                ref="address"
+                style={ styles.input }
+                onChangeText={ input => this.setState({ addressInput: input }) }
+                placeholder="Address"
+                value={ this.state.addressInput }
+                returnKeyType='next'
+                autoCapitalize="words"
+                onSubmitEditing={(event) => {
+                  this.refs.city.focus();
+                } }
+              />
+            </View>
+            <View style={ styles.textInput }>
+              <TextInput
+                ref="city"
+                style={ styles.input }
+                onChangeText={ input => this.setState({ cityInput: input }) }
+                placeholder="City"
+                value={ this.state.cityInput }
+                returnKeyType='next'
+                autoCapitalize="words"
+                onSubmitEditing={(event) => {
+                  this.refs.state.focus();
+                } }
+              />
+            </View>
+            <View style={ styles.textInput }>
+              <TextInput
+                ref="state"
+                style={ styles.input }
+                onChangeText={ input => this.setState({ stateInput: input }) }
+                placeholder="State"
+                value={ this.state.stateInput }
+                returnKeyType='next'
+                autoCapitalize="characters"
+                onSubmitEditing={(event) => {
+                  this.refs.zip.focus();
+                } }
+              />
+            </View>
+            <View style={ styles.textInput }>
+              <TextInput
+                ref="zip"
+                style={ styles.input }
+                onChangeText={ input => this.setState({ zipInput: input }) }
+                placeholder="Zip"
+                value={ this.state.zipInput }
+                keyboardType="numbers-and-punctuation"
+                returnKeyType='go'
+              />
+            </View>
           </View>
-          <View style={ styles.textInput }>
-            <TextInput
-              ref="city"
-              style={ styles.input }
-              onChangeText={ input => this.setState({ cityInput: input }) }
-              placeholder="City"
-              value={ this.state.cityInput }
-              returnKeyType='next'
-              autoCapitalize="words"
-              onSubmitEditing={(event) => {
-                this.refs.state.focus();
-              } }
-            />
-          </View>
-          <View style={ styles.textInput }>
-            <TextInput
-              ref="state"
-              style={ styles.input }
-              onChangeText={ input => this.setState({ stateInput: input }) }
-              placeholder="State"
-              value={ this.state.stateInput }
-              returnKeyType='next'
-              autoCapitalize="characters"
-              onSubmitEditing={(event) => {
-                this.refs.zip.focus();
-              } }
-            />
-          </View>
-          <View style={ styles.textInput }>
-            <TextInput
-              ref="zip"
-              style={ styles.input }
-              onChangeText={ input => this.setState({ zipInput: input }) }
-              placeholder="Zip"
-              value={ this.state.zipInput }
-              returnKeyType='go'
-            />
+          <View style={styles.buttonContainer}>
+            <TouchableHighlight
+              style={ styles.button }
+              onPress={ () => this.onPressAddress(address, city, usState, zip) }
+              >
+              <Text style={ styles.buttonText }>See your Representatives!</Text>
+            </TouchableHighlight>
           </View>
         </View>
-        <View style={styles.buttonContainer}>
-          <TouchableHighlight
-            style={ styles.button }
-            onPress={ () => this.onPressAddress(address, city, usState, zip) }
-            >
-            <Text style={ styles.buttonText }>See your Representatives!</Text>
-          </TouchableHighlight>
-        </View>
-      </View>
+      </TouchableWithoutFeedback>
 
     )
   }
