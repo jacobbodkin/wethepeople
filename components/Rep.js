@@ -109,7 +109,7 @@ class Rep extends Component {
 
     return(
 
-      <View style={ styles.repContainer }>
+      <TouchableOpacity style={ styles.repContainer } onPress={ () => this.clickForInfo() }>
         <View style={ styles.rowContainer }>
           <View style={ styles.rowTitle }>
             <Text style={ styles.titleText }>{ this.props.reps.title }, { (() => this.renderParty())() }</Text>
@@ -129,7 +129,7 @@ class Rep extends Component {
         </View>
         { (() => this.renderInfo())() }
         { (() => this.whichChevron())() }
-      </View>
+      </TouchableOpacity>
     );
   }
 }
