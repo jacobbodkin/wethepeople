@@ -13,10 +13,6 @@ import Home from './Home';
 import ChangeLocal from './ChangeLocal';
 import GoVote from './GoVote';
 import Header from './Header';
-
-
-
-
 import RepPage from './RepPage';
 
 
@@ -222,6 +218,7 @@ class App extends Component {
                 });
               }}>
               <View style={ styles.appContainer }>
+                <Header />
                 <Home address={ address } changePage={ this.changePage.bind(this) }/>
               </View>
             </Icon.TabBarItem>

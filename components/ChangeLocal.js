@@ -142,19 +142,19 @@ changeLocal: {
 question: {
   textAlign: 'center',
   fontSize: 25,
-  marginHorizontal: 10,
-  marginTop: 40,
-  marginBottom: 30
+  marginHorizontal: '2%',
+  marginTop: '10%',
+  marginBottom: '8%'
 },
 
 inputBlock: {
-  flex: 1.5,
+  
   flexDirection: 'column',
-  marginLeft: 40,
+  marginLeft: '10%',
   alignContent: 'center',
   justifyContent: 'center',
-  width: 300,
-  marginBottom: 50,
+  width: '80%',
+  marginBottom: '10%',
   shadowColor: '#141414',
   shadowOffset: {
     width: 0,
@@ -178,14 +178,14 @@ input: {
 buttonContainer:{
   flex: 1,
   alignItems: 'center',
-  marginBottom: 20
+  marginBottom: '15%'
 },
 
 button:{
   width: '80%',
   backgroundColor: '#2E9298',
   borderRadius: 10,
-  padding: 10,
+  padding: '2%',
   shadowColor: '#141414',
   shadowOffset: {
     width: 0,
@@ -197,7 +197,7 @@ button:{
 
 buttonText:{
   color: 'white',
-  paddingVertical: 10,
+  paddingVertical: '3%',
   textAlign: 'center',
   fontSize: 20
 },

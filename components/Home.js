@@ -27,11 +27,7 @@ componentDidMount() {
 
     return(
       <View style={ styles.home }>
-        <View style={ styles.homeLogo }>
-          <Image source={ heroImage } style={ styles.hero }>
-            <Text style={ styles.logo }>We the People ...</Text>
-          </Image>
-        </View>
+
         <View style={ styles.homeVal }>
           <View style={styles.homeText}>
             <Text style= {styles.text} >We see you're located at:</Text>
@@ -61,6 +57,7 @@ componentDidMount() {
               </View>
           </View>
         </View>
+
       </View>
 
     )
@@ -69,55 +66,34 @@ componentDidMount() {
 
 const styles = StyleSheet.create({
   home:{
-    flex: 1,
+    flex: 9,
     flexDirection: 'column'
   },
-  homeLogo: {
-    flex: 2,
-    flexDirection: 'column',
 
-
+  homeInfo: {
+    flex: 1,
   },
-  hero:{
-    alignItems: 'center',
-    width: null,
-    height: null,
-    resizeMode: 'cover'
 
-
-  },
-  logo:{
-    fontFamily: 'Zapfino',
-    fontSize: 33,
-    fontWeight: '700',
-    backgroundColor: 'transparent',
-    color: 'white',
-    alignItems: 'center',
-    flexDirection: 'column',
-    marginTop: '50%',
-
-  },
   homeVal:{
-    flex: 3,
     flexDirection: 'column',
-    marginTop: '30%'
+    marginTop: '40%'
 
   },
   homeText:{
     flexDirection: 'column',
     alignItems: 'center',
-    marginBottom: 40,
+    marginBottom: '10%',
 
   },
   locationStreet:{
     fontSize: 20,
-    marginTop: 5,
+    marginTop: '1%',
     color: '#141414',
-    paddingVertical: 5
+    paddingVertical: '2%'
   },
   locationCity:{
     fontSize: 20,
-    marginBottom: 10,
+    marginBottom: '2%',
     color: '#141414'
   },
   valButtons:{
@@ -126,13 +102,13 @@ const styles = StyleSheet.create({
   buttonContainer:{
     flex: 1,
     alignItems: 'center',
-    marginTop: 10
+    marginTop: '1%'
   },
   button:{
     width: '80%',
     backgroundColor: '#2E9298',
     borderRadius: 10,
-    padding: 10,
+    padding: '3%',
     shadowColor: '#141414',
     shadowOffset: {
       width: 0,
@@ -143,7 +119,7 @@ const styles = StyleSheet.create({
   },
   buttonText:{
     color: 'white',
-    paddingVertical: 10,
+    paddingVertical: '4%',
     textAlign: 'center',
     fontSize: 20
   },
